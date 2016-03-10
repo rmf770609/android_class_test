@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
         editor = sp.edit();
         //setting:
         //  editText: xxxxxx
-        editText.setText(sp.getString("editText" , ""));
+        editText.setText(sp.getString("editText", "")); // if editText is empty, get "" as default
 
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 /*2016-0310*/
-                editor.putString("editText" , editText.getText().toString()); //Put value in editText into setting:editText as xxxxxxx
+                editor.putString("editText", editText.getText().toString()); //Put value in editText into setting:editText as xxxxxxx
                 editor.apply(); //Execute
 
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -64,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         hideCheckBox = (CheckBox)findViewById(R.id.checkBox);
+
+        /*2016-0310*/
+        hideCheckBox.setChecked(sp.getBoolean("hideCheckBox" , false));  // if hideCheckBox is empty, get "" as default
+        hideCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                editor.putBoolean("hideCheckBox" , hideCheckBox.isChecked());
+                editor.apply();
+            }
+        });
 
     }
 
