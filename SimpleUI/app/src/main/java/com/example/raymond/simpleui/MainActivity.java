@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 /*2016-0310*/
-                editor.putString("editText" , editText.getText().toString());
-                editor.apply();
+                editor.putString("editText" , editText.getText().toString()); //Put value in editText into setting:editText as xxxxxxx
+                editor.apply(); //Execute
 
                 if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
                     submit(v);
