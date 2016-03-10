@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         /*2016-0310*/
         sp = getSharedPreferences("setting" , Context.MODE_PRIVATE );
         editor = sp.edit();
-
+        //setting:
+        //  editText: xxxxxx
         editText.setText(sp.getString("editText" , ""));
 
         editText.setOnKeyListener(new View.OnKeyListener() {
