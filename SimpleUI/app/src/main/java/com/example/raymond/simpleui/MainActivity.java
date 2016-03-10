@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     /*2016-0310*/
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
+    ListView listView;
+    Spinner spinner;
 
 
     @Override
@@ -36,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         //setting:
         //  editText: xxxxxx
         editText.setText(sp.getString("editText", "")); // if editText is empty, get "" as default
+
+        listView = (ListView)findViewById(R.id.listView);
+        spinner = (Spinner)findViewById(R.id.spinner);
 
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -67,20 +76,40 @@ public class MainActivity extends AppCompatActivity {
         hideCheckBox = (CheckBox)findViewById(R.id.checkBox);
 
         /*2016-0310*/
-        hideCheckBox.setChecked(sp.getBoolean("hideCheckBox" , false));  // if hideCheckBox is empty, get "" as default
+        hideCheckBox.setChecked(sp.getBoolean("hideCheckBox" , false));  // if hideCheckBox is empty, get "false" as default
         hideCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                editor.putBoolean("hideCheckBox" , hideCheckBox.isChecked());
+                editor.putBoolean("hideCheckBox", hideCheckBox.isChecked());
                 editor.apply();
             }
         });
 
+        setSpinner();
+        setListView();
+
+    }
+
+    private void setListView()
+    {
+        //String[] data = {"1", "2", "3", "4", "5"};
+        String[] data = Utils.readFile(this, "history.txt").split("\n");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        listView.setAdapter(adapter);
+    }
+
+    private void setSpinner()
+    {
+        //String[] data = {"1", "2", "3", "4", "5", "6"};
+        String[] data = getResources().getStringArray(R.array.storeInfo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        spinner.setAdapter(adapter);
     }
 
     public void submit(View view)
     {
         String text = editText.getText().toString();
+        Utils.writeFile(this, "history.txt", text+'\n');
         if(hideCheckBox.isChecked())
         {
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
@@ -90,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
         textView.setText(text);
         editText.setText("");
-
+        setListView();
         //Toast.makeText(this, "Hello World", Toast.LENGTH_LONG).show();
         //textView.setText("START");
     }
