@@ -1,9 +1,11 @@
 package com.example.raymond.simpleui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_MENU_ACTIVITY = 0;
 
     TextView textView;
     EditText editText;
@@ -124,4 +128,57 @@ public class MainActivity extends AppCompatActivity {
         //textView.setText("START");
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("debug", "Main onDestroy");
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("debug", "Main onRestart");
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("debug", "Main onStart");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("debug", "Main onStop");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("debug", "Main onResume");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("debug", "Main onPause");
+    }
+
+    public void goToMenu(View view)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, DrinkMenuActivity.class);
+        //startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_MENU_ACTIVITY);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("debug", "Main onActivityResult");
+
+        if(requestCode == REQUEST_CODE_MENU_ACTIVITY)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                textView.setText(data.getStringExtra("result"));
+            }
+        }
+    }
 }
