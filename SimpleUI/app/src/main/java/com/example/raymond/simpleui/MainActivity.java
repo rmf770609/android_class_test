@@ -18,6 +18,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_MENU_ACTIVITY = 0;
@@ -32,11 +41,47 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     Spinner spinner;
 
+    /* 0317 */
+    String menuResult = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // res/layout/activity_main.xml
+
+
+//        /* 0317 */
+//        Parse.enableLocalDatastore(this);
+//        Parse.initialize(this);
+//        ParseObject testObject = new ParseObject("TestObject");
+//        testObject.put("hi", "heyyyyyyyyyyyyy"); //testObject.put("lai", "heyyyyyyyyyyyyy");
+//        //testObject.saveInBackground();
+//        /* NW issue can be found in debug message as below */
+//        testObject.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e != null) {
+//                    Log.d("debug", e.toString());
+//                }
+//            }
+//        });
+
+
+        /* homework */
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
+        ParseObject hwObject = new ParseObject("HomeworkParse");
+        hwObject.put("sid", "And26315");
+        hwObject.put("email", "tienhungfong@gmail.com");
+        hwObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.d("debug", e.toString());
+                }
+            }
+        });
 
         textView = (TextView)findViewById(R.id.textView);
         editText = (EditText)findViewById(R.id.editText);
@@ -114,6 +159,25 @@ public class MainActivity extends AppCompatActivity {
     {
         String text = editText.getText().toString();
         Utils.writeFile(this, "history.txt", text+'\n');
+
+        /* 0317 */
+        ParseObject orderObject = new ParseObject("Order");
+
+        orderObject.put("note", text);
+        orderObject.put("storeInfo", spinner.getSelectedItem());
+        orderObject.put("menu", menuResult);
+
+        orderObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Toast.makeText(MainActivity.this, "Submit OK", Toast.LENGTH_LONG);
+                } else {
+                    Toast.makeText(MainActivity.this, "Submit FAIL", Toast.LENGTH_LONG);
+                }
+            }
+        });
+
         if(hideCheckBox.isChecked())
         {
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
@@ -177,7 +241,32 @@ public class MainActivity extends AppCompatActivity {
         {
             if(resultCode == RESULT_OK)
             {
-                textView.setText(data.getStringExtra("result"));
+                menuResult = data.getStringExtra("result");
+
+                try{
+                    JSONArray array = new JSONArray(menuResult);
+                    String text="";
+
+                    for(int i=0; i < array.length(); i++)
+                    {
+                        JSONObject order = array.getJSONObject(i);
+
+                        String name = order.getString("name");
+                        String lNumber = String.valueOf(order.getInt("lNumber"));
+                        String mNumber = String.valueOf(order.getInt("mNumber"));
+
+                        text = text + name + " l: " + lNumber + " m: " + mNumber + "\n";
+
+                    }
+
+                    textView.setText(text);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                //textView.setText(data.getStringExtra("result"));
+
             }
         }
     }

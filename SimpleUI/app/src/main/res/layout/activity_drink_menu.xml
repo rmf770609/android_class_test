@@ -16,13 +16,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="105dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/root">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/linearLayout"
+            android:layout_alignTop="@+id/root"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true">
 
@@ -37,9 +37,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn1_BlackTea"
-                android:layout_alignTop="@+id/linearLayout"
-                android:layout_alignRight="@+id/linearLayout"
-                android:layout_alignEnd="@+id/linearLayout"
+                android:layout_alignTop="@+id/root"
+                android:layout_alignRight="@+id/root"
+                android:layout_alignEnd="@+id/root"
                 android:layout_weight="1"
                 android:onClick="add"
                 android:text="0" />
@@ -58,7 +58,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/linearLayout"
+            android:layout_alignTop="@+id/root"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" >
 
@@ -74,9 +74,9 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:id="@+id/btn1_GreenTea"
-                android:layout_alignTop="@+id/linearLayout"
-                android:layout_alignRight="@+id/linearLayout"
-                android:layout_alignEnd="@+id/linearLayout"
+                android:layout_alignTop="@+id/root"
+                android:layout_alignRight="@+id/root"
+                android:layout_alignEnd="@+id/root"
                 android:layout_weight="1"
                 android:onClick="add" />
 
@@ -94,7 +94,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/linearLayout"
+            android:layout_alignTop="@+id/root"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" >
 
@@ -110,9 +110,9 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:id="@+id/btn1_MilkTea"
-                android:layout_alignTop="@+id/linearLayout"
-                android:layout_alignRight="@+id/linearLayout"
-                android:layout_alignEnd="@+id/linearLayout"
+                android:layout_alignTop="@+id/root"
+                android:layout_alignRight="@+id/root"
+                android:layout_alignEnd="@+id/root"
                 android:layout_weight="1"
                 android:onClick="add" />
 
