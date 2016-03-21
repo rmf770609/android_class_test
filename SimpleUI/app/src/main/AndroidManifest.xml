@@ -21,21 +21,21 @@
         </activity>
         <activity android:name=".DrinkMenuActivity"></activity>
 
-        <!--/* 0317 */-->
-        <!--<meta-data-->
-            <!--android:name="com.parse.APPLICATION_ID"-->
-            <!--android:value="XcUmvcSIMJefbmJDFcidLC6mNBQEAaGHYiGPSYAS" />-->
-        <!--<meta-data-->
-            <!--android:name="com.parse.CLIENT_KEY"-->
-            <!--android:value="DnZ3ggXI55eF8ypD5bps3eBYQ0qAFCHehre5Wu6a" />-->
-
-        /* homework */
+        /* 0317 */
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="J1Jv0XjBPezieAgDeYo9FmAlUBCWaauVIs6mhvQ2" />
+            android:value="XcUmvcSIMJefbmJDFcidLC6mNBQEAaGHYiGPSYAS" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="sBrwCLrxZKNVk2gyXjZMuGCJhUFChUBIbxeRtuqV" />
+            android:value="DnZ3ggXI55eF8ypD5bps3eBYQ0qAFCHehre5Wu6a" />
+
+        <!--/* homework */-->
+        <!--<meta-data-->
+            <!--android:name="com.parse.APPLICATION_ID"-->
+            <!--android:value="J1Jv0XjBPezieAgDeYo9FmAlUBCWaauVIs6mhvQ2" />-->
+        <!--<meta-data-->
+            <!--android:name="com.parse.CLIENT_KEY"-->
+            <!--android:value="sBrwCLrxZKNVk2gyXjZMuGCJhUFChUBIbxeRtuqV" />-->
 
     </application>
 

@@ -51,30 +51,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); // res/layout/activity_main.xml
 
 
-//        /* 0317 */
-//        Parse.enableLocalDatastore(this);
-//        Parse.initialize(this);
-//        ParseObject testObject = new ParseObject("TestObject");
-//        testObject.put("hi", "heyyyyyyyyyyyyy"); //testObject.put("lai", "heyyyyyyyyyyyyy");
-//        //testObject.saveInBackground();
-//        /* NW issue can be found in debug message as below */
-//        testObject.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if (e != null) {
-//                    Log.d("debug", e.toString());
-//                }
-//            }
-//        });
-
-
-        /* homework */
+        /* 0317 */
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
-        ParseObject hwObject = new ParseObject("HomeworkParse");
-        hwObject.put("sid", "And26315");
-        hwObject.put("email", "tienhungfong@gmail.com");
-        hwObject.saveInBackground(new SaveCallback() {
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("hi", "heyyyyyyyyyyyyy"); //testObject.put("lai", "heyyyyyyyyyyyyy");
+        //testObject.saveInBackground();
+        /* NW issue can be found in debug message as below */
+        testObject.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
@@ -82,6 +66,22 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+//        /* homework */
+//        Parse.enableLocalDatastore(this);
+//        Parse.initialize(this);
+//        ParseObject hwObject = new ParseObject("HomeworkParse");
+//        hwObject.put("sid", "And26315");
+//        hwObject.put("email", "tienhungfong@gmail.com");
+//        hwObject.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e != null) {
+//                    Log.d("debug", e.toString());
+//                }
+//            }
+//        });
 
         textView = (TextView)findViewById(R.id.textView);
         editText = (EditText)findViewById(R.id.editText);
