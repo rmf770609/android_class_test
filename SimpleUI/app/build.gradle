@@ -31,4 +31,8 @@ dependencies {
     /* 0324 */
     compile 'com.squareup.picasso:picasso:2.5.2'
 
+    /* 0331 Google play service */
+    compile 'com.google.android.gms:play-services:8.4.0'
+    /* 0331 FB service*/
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 }

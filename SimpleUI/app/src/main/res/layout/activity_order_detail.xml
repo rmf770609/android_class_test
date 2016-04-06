@@ -78,6 +78,13 @@
                 android:id="@+id/webView"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/staticMapImageView" />
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:id="@+id/mapFragment"
+                android:layout_below="@+id/webView" />
         </RelativeLayout>
     </ScrollView>
 

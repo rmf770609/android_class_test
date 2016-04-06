@@ -35,6 +35,16 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="DnZ3ggXI55eF8ypD5bps3eBYQ0qAFCHehre5Wu6a" />
 
+        /* 0331 Google */
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDAXha6QPtB-QRW0kb8OmVkFC0TVI-16yE"/>
+        /* 0331 FB */
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+
         <!-- /* homework */ -->
         <!-- <meta-data -->
         <!-- android:name="com.parse.APPLICATION_ID" -->
@@ -44,6 +54,14 @@
         <!-- android:value="sBrwCLrxZKNVk2gyXjZMuGCJhUFChUBIbxeRtuqV" /> -->
 
         <activity android:name=".OrderDetailActivity"></activity>
+
+        /* 0331 FB */
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.example.raymond.simpleui;
 
 import android.app.Application;
 
+import com.facebook.FacebookSdk;
 import com.parse.Parse;
 
 /**
@@ -16,5 +17,8 @@ public class SimpleUIApplication extends Application {
         /* 0321 move from MainActivity */
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
+
+        /* 0331 */
+        FacebookSdk.sdkInitialize(getApplicationContext());
     }
 }
